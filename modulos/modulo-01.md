@@ -1,0 +1,1 @@
+# 📦 Nuevas variables - Creación, Actualización y Ambitos
