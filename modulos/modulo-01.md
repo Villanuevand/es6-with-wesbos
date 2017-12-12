@@ -69,7 +69,10 @@ console.log(width) // 100;
 
 ```
 
+Lo que hicimos en este pequeño refactor fué sacar la función al ámbito global de la aplicación, para que así esté disponible en cualquier momento. 
 Pero recuerda que siempre es mejor tener nuestras variables declaradas solo justo donde la utilizaremos. 
+
+Ahora, mira el siguiente ejemplo: 
 
 ```js
 
@@ -79,12 +82,30 @@ if (age > 12) {
   console.log(`You're ${dogYears} dog years old`); //
 }
 
-var width = 100; 
-let height = 200;
-const key = 'abc123'
-
+console.log(dogYears); // ¿?
 ```
 
+¿Cúal crees que sera el resultado del ùltimo `console.log`? 
+
+Pues, si pensaste que iba a dar `not defined` olvidaste algo: 
+
+> Las variables `var` son conocidas por tener un ámbito de función, lo que quiere decir que estarán disponibles solo en el contexto donde se les declare. 
+
+En el ejemplo, la variable es declarada dentro de una sentencía `if`, lo que ***NO*** es una función, y por ende, por lo que se entiende que `dogYears` es global. Y acá es donde aparece un de loas 3 maneras de declarar variables en JS, las variables `let`.
+
+`let` , es la palabra reservada que llega para solventar justamente esto que acabamos de ver en el ejemplo anterior. Las variables `let` son variables que su àmbito es el bloque o segmento donde se le declare, entendiendo que un bloque o segmento de código es todo lo que est dentro de `{ ... }`. Entonces si hacemos otra pequeña refactorización a nuestro snippet.
+
+```js
+
+var age = 100; 
+if (age > 12) {
+  let dogYears = age * 7; 
+  console.log(`You're ${dogYears} dog years old`); //
+}
+
+console.log(dogYears); // dogYears is not defined
+```
+Al igual que `let`, `const` tiene la particularidad de ser variables que estarán disponibles solo en el bloque donde se les declare.
 
 ## let vs const
 
