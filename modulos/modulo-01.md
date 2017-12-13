@@ -109,6 +109,108 @@ Al igual que `let`, `const` tiene la particularidad de ser variables que estará
 
 ## let vs const
 
+Ahora que sabemos que las variables `var` son de ámbito de función y `let` y `const` son de ámbito de bloque, otro punto importante que deberías de conocer es que dentro del àmbito donde declares `let` y `const` solo debes hacerlo una vez. Miremos un ejemplo
+
+```js
+const key = 'abc123'
+let points = 50; 
+let winner = true;
+
+```
+
+En el ejemplo anterior tenemos 3 variables, `key`, `points` y `winner`, que pasaría si intento reasignarle un valor a `points`:
+
+```js
+const key = 'abc123'
+let points = 50; 
+let winner = false;
+
+let points = 60; 
+
+```
+
+Al ejecutar esto obtendríamos el siguiente error: `Identifier 'points' has already been declared` y es debido a que `points` ya está siendo declarada anteriormente. Para actualizar su valor correctamente solo debemos eliminar la palabra reservada `let`:
+
+```js
+const key = 'abc123'
+let points = 50; 
+let winner = false;
+
+points = 60; 
+
+```
+Y listo, pero recuerda, que no puedes declarar más de una vez en el mismo ámbito. Ahora, que pasaría si tenemos algo como esto: 
+
+```js
+const key = 'abc123'
+let points = 100; 
+let winner = false;
+
+if (points > 40 ) { 
+  let winner = true;
+} 
+
+```
+Si corremos esto en el navegador nos damos cuenta de que todo está bien, pero que pasa si consultamos el valor `winner`. 
+
+```js
+const key = 'abc123'
+let points = 100; 
+let winner = true;
+
+if (points > 40 ) { 
+  let winner = true;
+} 
+console.log(winner) // false ¿? 
+
+```
+
+¿FALSE?, pero ¿por qué `false`? 
+Esto se debe a que aunque ambas variables tienen el mismo nombre, se encuentran en ámbitos distintos, el primer `winner` tiene como ámbito el `window` o àmbito global, y el segundo `winner`, está dentro del ámbito de la sentencia `if`.
+
+Otra cosa que debemos recordar **siempre** son las diferencias entre `let`y `const`. Principalmente `let` puede ser actualizada y `const` no puede ser actualiza.  Si decimos: 
+
+```js
+const key = 'abc123'
+let points = 100; 
+let winner = true;
+
+points = 60;  // todo andará bien hasta acá, pero... 
+key = 'abc1234'; // Uncaught TypeError: Assignment to constant variable.
+
+```
+
+Ocurre este error, ya que las variables de tipo `const` no pueden cambiar su tipo ni valor, pero... ¿Qué pasará
+ si en vez de almacenar un `string` o un `boleean` o lo que sea, almaceno un objeto y posteriormente quiero modificarlo?
+ 
+```js
+const person = {
+  name: 'Andrés',
+  age: 31
+}
+
+console.log(person) // {name: 'Andrés', age: 31}
+person = {name: 'José'} // ¿?
+``` 
+Obtendremos un error ` Uncaught SyntaxError: Identifier 'person' has already been declared`, y es que por su naturaleza las variables `const` no pueden ser modificadas, pero si sus propiedades... ¿QUE?. Si, las propiedades de una variable `const` pueden cambiar.
+
+Tomando como referencía el ejemplo anterior, yo soy `person`, eso nunca va a cambiar, pero si puedo cambiar alguno de mis atributos,  voy a cambiar mi edad `age` e incluso mi nombre,  `name` (aunque es un problema legal), quizas mi dirección etc.  Y eso esta bien, no tiene nada de raro. 
+
+```js
+const person = {
+  name: 'Andrés',
+  age: 31
+}
+
+person.age = 32;
+console.log(person) // {name: 'Andrés', age: 32}
+
+``` 
+ 
+Podemos evitar la modificación de las propiedades de un objeto almacenado en una variable `const` con `Object.freeze()` pero lo hablaremos más adelante. 
+ 
+ 
+
 ## let y const en el mundo real 
 
 ## zona muerta temporal
