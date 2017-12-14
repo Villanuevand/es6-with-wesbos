@@ -209,9 +209,104 @@ console.log(person) // {name: 'Andrés', age: 32}
  
 Podemos evitar la modificación de las propiedades de un objeto almacenado en una variable `const` con `Object.freeze()` pero lo hablaremos más adelante. 
  
- 
 
 ## let y const en el mundo real 
+
+Probablemente ya estarás viendo donde `let` y `const` puedan ser útiles, en donde necesites una mantener un ámbito de bloque, o donde no quieras que nadie cambie el valor de una variable por accidente o con intención. Pero miremos algunos ejemplos más  en donde estas puedan ser útiles.
+
+La primera sería reemplazando las [IIFE](http://www.etnassoft.com/2011/03/14/funciones-autoejecutables-en-javascript/), no estoy seguro si alguno ha escuchado sobre ellas (espero que sí). IIFE significa "Inmedialty Invoke Function Expression" o en español "Funciones Autoejecutables". 
+
+Las funciones autoejecutables son, como su nombre lo indica, funciones que se ejecutan solas automáticamente, y en donde nada se va a poder filtrar a su ámbito. Pero miremos un ejemplo: 
+
+```js
+var name = 'Andrés';
+```
+Tenemos esta variable `name` que su ámbito es el objeto `window` por no haberla declarado dentro de una función, y que no está mla, porque estamos en un ejemplo. Pero ¿qué pasaría si en tú aplicación, alguien más declara una varaible con el mismo nombre? o si alguna librería usa una variable nombrada de esa manera?, sería un desastre... 
+
+Y la manera de solucionar esto sería usando una función autoejecutable, o iife, por sus siglas en ingles.
+
+```js
+(function(){
+  var name = 'Andrés';
+})();
+
+```
+
+Ahora la variable `name` está alojada en el ambito de la función autoejecutable, y no estará disponible en el ámbito global, porque `var` es un tipo de variable de ámbito de función. Si copiamos y pagamos este pequeño ejemplo en la consola del navegador, y tipeamos `name`, podemos darnos cuenta que retorna un valor vacio, `""`, pero si queremos visualizarla podemos ver su valor: 
+
+```js
+(function(){
+  var name = 'Andrés';
+  console.log(name);  // Andrés
+})(); 
+
+```
+
+Con `let` y `const` nisiquiera necesitamos de una función, ya que estas son ámbito de bloque, y lo único que necesitamos eso.
+
+
+```js
+{
+ const name = 'Andrés';
+ console.log(name); // Andrés
+}
+
+```
+
+ Si copiamos y pagamos este pequeño ejemplo en la consola del navegador, y tipeamos `name`, podemos darnos cuenta que retorna un valor vacio, `""`, pero si queremos visualizarla podemos ver su valor, usando `console.log()`.  Y esto es posible ya que este tipo de variables, repetimos, tiene un ámbito de bloque. 
+ 
+ Otro problema que ayuda a solucionar `let` y `const` es el del bucle `for`, y se qué estarás pensando, ¿Qué problema hay en el `for`?.
+ 
+ Si ejecutamos el siguiente ejemplo en el navegador
+ 
+ ```js
+ 
+ for (var i = 0; i < 10; i++) {
+  console.log(i);
+ }
+ ```
+ 
+La salida será algo como esto: 
+```js
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+```
+Pero ¿que pasa si consultamos el valor de `i` en nuesta consola?, el valor sería 10, ¿WHAT?. Y si, podemos consultar el valor de `i` , por que esta se ha filtrado en el ámbito global de la aplicación. 
+
+Otro punto también interesante, sería el querer realizar algo dentro del bucle `for`, quizás ejecutar algo en un tiempo determinado, quizás una función AJAX. Vamos a emularlo usando un `setTimeout`. 
+
+```js
+for (var i = 0; i < 10; i++) {
+  console.log(i);
+  setTimeout(function () {
+    console.log('The number is : ' + i);
+  },1000);
+}
+```
+
+¡¿QUÉ?! ¿después de 1 segundo todas valen 10?
+Esto ocurre debido a que `i` del `console.log()` se ejecutará inmediatamente, y sólo después de 1 segundo se disparará el setTimeout; tiempo suficiente para que el bucle for haya iterado la cantidad de veces establecidas y sobre escrito su valor, que para ese momento valdrá 10.
+
+Una manera sencilla de evitar esto es utilizando `let`, y ¿por qué `let`?.  `let` tiene ámbito de bloque. 
+
+```js
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+  setTimeout(function () {
+    console.log('The number is : ' + i);
+  },1000);
+}
+```
+
+¡tarán! .... Ahora todo funciona bien. 
 
 ## zona muerta temporal
 
