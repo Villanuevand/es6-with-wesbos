@@ -310,4 +310,36 @@ for (let i = 0; i < 10; i++) {
 
 ## zona muerta temporal
 
+Este es un tópico bastante aburrido, (palabras textuales de Wesbos), y en lo que intentaremos hacer es explicar de una manera divertida que es la "Zona Muerta Temporal". Este es un punto que no se verá muy a menudo, pero es muy útil conocerlo.  Hay que hacer la aclaración, que el nombre **Zona muerta temporal** es un término inventado por wes, así que, no sé si lo encontrarás de esa manera en otros recursos en la web.
+
+Ahora, tenemos el siguiente ejemplo: 
+
+```js
+var pizza = 'Deep dish 🍕🍕🍕'; 
+console.log(pizza);  // 'Deep dish 🍕🍕🍕`
+```
+
+Es sencillo saber que al ejecutarse este fragmento de código, tendremos como resultado `Deep dish 🍕🍕🍕`, ¡Genial! nada difícil hasta acá. 
+
+Pero ¿qué pasaría si intentamos acceder al valor de `pizza` ante de declararla? 
+
+```js
+console.log(pizza);  // ¿?
+var pizza = 'Deep dish 🍕🍕🍕'; 
+```
+
+`undefined`, pero.. ¿por qué `undefined`?, esto se de a que con las variables de tipo `var` puedes acceder a ellas como si estuviesen definidas, por que están definidas, pero no puedes acceder a su valor. 
+
+Si cambiamos esto por `let` o `const` todo cambia... 
+
+```js
+console.log(pizza);  // Uncaught ReferenceError: pizza is not defined
+/*
+* Zona de muerte temporal 
+*/
+const pizza = 'Deep dish 🍕🍕🍕'; 
+```
+
+El espacio comentado es lo que podemos entender como la **Zona muerta temporal**
+
 ## ¿var está muerta? ¿Qué debería utilizar?
