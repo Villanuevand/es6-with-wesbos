@@ -343,3 +343,9 @@ const pizza = 'Deep dish 🍕🍕🍕';
 El espacio comentado es lo que podemos entender como la **Zona muerta temporal**
 
 ## ¿var está muerta? ¿Qué debería utilizar?
+
+Hasta ahora hemos aprendido sobre `let` y `const` lo que hacen, cuales son su ambitos, cuando pueden ser reescritas y cuando no, pero la pregunta es ... ¿Qué debería usar yo actualmente?, y eso es una tópico bastante polémico en la comunidad actualmente. Algunas personas siguen prefiendo usar `var`, otros dicen que `var` está muerta, otros dicen "¡usen `let`!" otros  "¡siempre usan `const`!". 
+
+En este caso, Wesbos nos muestra 2 interesantes artículos de personas, muy muy inteligentes en el ámbito de `javascript`. Con esto lo que se pretende es que cada quien saque sus sustente y saque sus propias conclusiones sobre cual usar. 
+
+La primera, es un artículo de Mathias Bynens, [const vs let](https://mathiasbynens.be/notes/es6-const#const-vs-let) y el segundo y no menos importante, 
