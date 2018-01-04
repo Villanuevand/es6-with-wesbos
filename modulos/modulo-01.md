@@ -2,6 +2,14 @@
 
 _Todos los scripts pueden ser usados directamente en la consola de tu navegador_
 
+### Contenido
+
+- [Refrescamiento... Ámbito de variables](#-nuevas-variables---creaci%C3%B3n-actualizaci%C3%B3n-y-ambitos)
+- [let vs const](#let-vs-const)
+- [let y const en el mundo real](#let-y-const-en-el-mundo-real)
+- [zona muerta temporal](#zona-muerta-temporal)
+- [¿var está muerta? ¿Qué debería utilizar?](#var-est%C3%A1-muerta-qu%C3%A9-deber%C3%ADa-utilizar)
+
 
 ## Refrescamiento... Ámbito de variables
 
