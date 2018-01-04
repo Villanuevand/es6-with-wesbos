@@ -6,16 +6,16 @@
 
 Importante conocer: 
 
-- ✅ - Modulo listo!
-
-- ⏳ - Módulo pendiente!
+- ✅ : Modulo listo!
+- 🚧 : Modulo en progreso!
+- ⏳ : Módulo pendiente!
 
 
 
 Este curso consta de 21 módulos divididos de la siguiente manera: 
 
 - ✅ [ 01 | Nuevas variables - Creación, Actualización y Ambitos.](/modulos/modulo-01.md)
-- ⏳ [ 02 | Mejoras en Funciones - Flechas (a.k.a: arrows) y Argumentos por Defecto.](/modulos/modulo-02.md)
+- 🚧 [ 02 | Mejoras en Funciones - Flechas (a.k.a: arrows) y Argumentos por Defecto.](/modulos/modulo-02.md)
 - ⏳ [ 03 | Plantillas de Cadena de Texto (a.k.a: Template Strings).](/modulos/modulo-03.md)
 - ⏳ [ 04 | Mejoras adicionales en Cadenas de Texto.](/modulos/modulo-04.md)
 - ⏳ [ 05 | Destructuración.](/modulos/modulo-05.md)
