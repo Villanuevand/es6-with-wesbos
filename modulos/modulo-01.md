@@ -116,6 +116,8 @@ console.log(dogYears); // dogYears is not defined
 ```
 Al igual que `let`, `const` tiene la particularidad de ser variables que estarán disponibles solo en el bloque donde se les declare.
 
+[Ir arriba ⬆️](#contenido)
+
 ## let vs const
 
 Ahora que sabemos que las variables `var` son de ámbito de función y `let` y `const` son de ámbito de bloque, otro punto importante que deberías de conocer es que dentro del àmbito donde declares `let` y `const` solo debes hacerlo una vez. Miremos un ejemplo
@@ -217,6 +219,8 @@ console.log(person) // {name: 'Andrés', age: 32}
 ``` 
  
 Podemos evitar la modificación de las propiedades de un objeto almacenado en una variable `const` con `Object.freeze()` pero lo hablaremos más adelante. 
+
+[Ir arriba ⬆️](#contenido)
  
 
 ## let y const en el mundo real 
@@ -317,6 +321,9 @@ for (let i = 0; i < 10; i++) {
 
 ¡tarán! .... Ahora todo funciona bien. 
 
+[Ir arriba ⬆️](#contenido)
+
+
 ## zona muerta temporal
 
 Este es un tópico bastante aburrido, (palabras textuales de Wesbos), y en lo que intentaremos hacer es explicar de una manera divertida que es la "Zona Muerta Temporal". Este es un punto que no se verá muy a menudo, pero es muy útil conocerlo.  Hay que hacer la aclaración, que el nombre **Zona muerta temporal** es un término inventado por wes, así que, no sé si lo encontrarás de esa manera en otros recursos en la web.
@@ -351,6 +358,9 @@ const pizza = 'Deep dish 🍕🍕🍕';
 
 El espacio comentado es lo que podemos entender como la **Zona muerta temporal**
 
+[Ir arriba ⬆️](#contenido)
+
+
 ## ¿var está muerta? ¿Qué debería utilizar?
 
 Hasta ahora hemos aprendido sobre `let` y `const` lo que hacen, cuales son su ambitos, cuando pueden ser reescritas y cuando no, pero la pregunta es ... ¿Qué debería usar yo actualmente?, y eso es una tópico bastante polémico en la comunidad actualmente. Algunas personas siguen prefiendo usar `var`, otros dicen que `var` está muerta, otros dicen "¡usen `let`!" otros  "¡siempre usan `const`!". 
@@ -368,5 +378,7 @@ Otro artículo muy popular es el de Kyle Simpson ,quíen ha escrito varios libro
 > - Usar `var` para variables `top-level` que son compartidas a traves de muchos ámbitos.
 > - Usar `let` para variables localizadas en ambitos más pequeños.
 > - Refactorizar `let` a `const` solo despues de que el código esté escrito, y estes totalmente seguro de que contemplaste tener un caso donde no se debería hacer una reasignación.
+
+[Próximo módulo ➡️](/modulos/modulo-02.md)
 
 
