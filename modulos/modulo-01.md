@@ -2,6 +2,7 @@
 
 _Todos los scripts pueden ser usados directamente en la consola de tu navegador_
 
+
 ## Refrescamiento... Ámbito de variables
 
 En javascript tenemos 3 maneras de declarar variables, 
@@ -348,4 +349,16 @@ Hasta ahora hemos aprendido sobre `let` y `const` lo que hacen, cuales son su am
 
 En este caso, Wesbos nos muestra 2 interesantes artículos de personas, muy muy inteligentes en el ámbito de `javascript`. Con esto lo que se pretende es que cada quien saque sus sustente y saque sus propias conclusiones sobre cual usar. 
 
-La primera, es un artículo de Mathias Bynens, [const vs let](https://mathiasbynens.be/notes/es6-const#const-vs-let) y el segundo y no menos importante, 
+La primera, es un artículo de Mathias Bynens, [const vs let](https://mathiasbynens.be/notes/es6-const#const-vs-let), nos comenta: 
+
+> - Usar `const` por defecto
+> - Usar `let` si es necesario un `rebind`
+> - `var` no debería usarse en (ES6).
+
+Otro artículo muy popular es el de Kyle Simpson ,quíen ha escrito varios libros muy interesantes sobre javascript (El artículo que menciona wesbos, ya no se encuentra en internet) nos recomienda lo siguiente: 
+
+> - Usar `var` para variables `top-level` que son compartidas a traves de muchos ámbitos.
+> - Usar `let` para variables localizadas en ambitos más pequeños.
+> - Refactorizar `let` a `const` solo despues de que el código esté escrito, y estes totalmente seguro de que contemplaste tener un caso donde no se debería hacer una reasignación.
+
+
