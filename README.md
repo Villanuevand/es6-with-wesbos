@@ -4,6 +4,8 @@
 
 🎙️ Curso sobre ES6 con [Wesbos](https://twitter.com/wesbos) 😎 💻
 
+Puedes hacer seguimiento en [tablero del proyecto](https://github.com/Villanuevand/es6-with-wesbos/projects/1) 🏁📅
+
 Importante conocer: 
 
 - ✅ : Modulo listo!
