@@ -1,6 +1,7 @@
 # 📦 Nuevas variables - Creación, Actualización y Ambitos
 
-_Todos los scripts pueden ser usados directamente en la consola de tu navegador_
+
+📌 **_Todos los scripts pueden ser usados directamente en la consola de tu navegador_**
 
 ### Contenido
 
