@@ -6,13 +6,19 @@
 
 Puedes hacer seguimiento en [tablero del proyecto](https://github.com/Villanuevand/es6-with-wesbos/projects/1) 🏁📅
 
-Importante conocer: 
+Leyenda: 
 
 - ✅ : Modulo listo!
 - 🚧 : Modulo en progreso!
 - ⏳ : Módulo pendiente!
 
+### 🚨 Aclaración 🚨
 
+La traducción es en su mayoría son las palabras de Wesbos, en algunos casos (_muy pocos_) he tenido que completar complementar la misma con alguna frase u oración. 
+
+**No soy el creador del contenido de este repo** 🙂
+
+---
 
 Este curso consta de 21 módulos divididos de la siguiente manera: 
 
