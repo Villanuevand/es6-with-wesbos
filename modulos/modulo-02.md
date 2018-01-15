@@ -1,6 +1,6 @@
 # 📦 Mejoras en Funciones - Flechas (a.k.a: arrows) y Argumentos por Defecto
 
-_Todos los scripts pueden ser usados directamente en la consola de tu navegador_
+📌 **_Todos los scripts pueden ser usados directamente en la consola de tu navegador_**
 
 Una de las cosas que más me costó sobre este módulo fue el hecho de escribir, ***Funciones Flecha*** en vez de ***Arrow Functions***, pero es la traducción correcta, y aunque suene raro, ese es el término que usaremos. 🙂
 
@@ -176,6 +176,108 @@ Esto es lo que se conoce como una _función declarada_ o _function declaration_ 
 [Ir arriba 👆](#contenido)
 
 ## Más ejemplos de funciones flechas
+
+Vamos a ver un par de ejemplos más sobre las _funciones flecha_  antes de comenzar a hablar de ellas, y esto que veremos es lago que pasa muy seguido cuando estás construyendo una aplicación y los datos no necesariamente vienen en un formato que quiero. 
+
+Estoy construyendo un sitio web para un grupo de corredores.
+
+```js
+const race = '100m Dash';
+const winners = ['HUnter Gath', 'Singa Song', 'Imda Bos'];
+```
+
+En donde la información que poseo es la información de la carrera de tipo `string`, almacenada en la variable `race` , y los 3 primeros puestos en un `array` de `strings`  almacenada en la variable `winners`.
+
+Lo ideal para mí, lo que me hubiese gustado recibir hubiera sido un  `objeto` con la siguiente estructura:
+
+```js
+{
+  name: 'Wes Bos',
+  place: 1,
+  race: race // const
+}
+```
+
+Pero, ¿cómo podemos hacer esto?, con la función `map()`,  que por cierto, `map()` no es la unica función con la que las _funciones flechas_ funcionan, las _funciones flechas_ funciona con todo y son particularmente útiles en las situaciones donde aparecen los `callbacks`.
+
+Entonces quedaría algo así:
+
+```js
+const race = '100m Dash';
+const winners = ['HUnter Gath', 'Singa Song', 'Imda Bos'];
+
+const win = winners.map((winner, i) => { name: winner, race: race, place: i});
+```
+
+La constante `win` deberá retornar un objeto  de objetos (`{{},{}...}`), lo que vemos en el código de arriba no es más que la 
+iteración de `winners` usando la función `map()`, donde está poseerá 2 parámetros: `winner` y `i`, la primera almacena el nombre del ganador, y la segunda será el _index_ de la interación para establecer la posición en la que llego el corredor. 
+
+¿Cómo se retornar un objeto?, asumimos que colocando llaves (`{}`), dentro habrá una propiedad `name` con el valor del corredor al momento de la iteración, otra propiedad `race` con el nombre de la carrera que se disputó y por último `place` que almacenará la posición en la que llego el corredor. Si ejecutamos esto en la consola de nuestro navegador favorito ... 
+
+`Uncaught SyntaxError: Unexpected token :`
+
+¿Qué está mal acá?, bueno, antes te comentamos que si eliminabas las llaves `{}` se entendía con un _retorno implícito_ , pero ¿cómo hacer un _returno implícito_ de un objeto sabiendo que las llaves no son las que definen el ámbito de una función sino un objeto?.
+
+La solución es colocar paréntesis alrededor de esta, los paréntesis mostrarán que lo que se retornará es un  objeto literal, y no que son el ámbito de una función.
+
+
+```js
+const race = '100m Dash';
+const winners = ['HUnter Gath', 'Singa Song', 'Imda Bos'];
+
+const win = winners.map((winner, i) => ({ name: winner, race: race, place: i}));
+```
+
+> Usa `console.table(win)` para ver una muy linda tabla con los datos de `win`
+
+<img src="http://drive.google.com/uc?export=download&id=1QJ0Sd0SbAhV0MA7YBuZ19iqcWusCGCHg" width="400"/>
+
+El problema que tenemos ahora es que `place` esta basado en 0, ya que el _index_ de un arreglo comienza en 0. Para solventarlo solo debemos sumar 1 al valor del _index.
+
+```js
+const win = winners.map((winner, i) => ({ name: winner, race: race, place: i + 1}));
+```
+
+Otro punto que podríamos mejorar es lo redundante que se ve la propiedad del objeto `race`, que se le asigna el valor de la variable `race`, lo que lo puede hacer confuso y repetitivo, las nuevas carácteristicas de ES6, no permite solo colocar `race`.
+
+```js
+const win = winners.map((winner, i) => ({ name: winner, race, place: i + 1}));
+```
+
+La propiedad y el valor `race` estan resumidos en uno.
+
+```js
+const race = '100m Dash';
+const winners = ['HUnter Gath', 'Singa Song', 'Imda Bos'];
+
+const win = winners.map((winner, i) => ({ name: winner, race, place: i + 1}));
+```
+
+Esto ha sido un ejemplo de un _retorno implícito_ de un objeto literal .
+
+Hay otro ejemplo acá, donde encuestamos a las personas de una sala por la edad: 
+
+```js
+const ages = [23, 62, 45, 234, 2, 62, 234, 63, 34];
+```
+
+Queremos filtrar esta lista con las personas que son mayores a 60 años, pero... ¿cómo hacemos esto?.
+
+```js
+const ages = [23, 62, 45, 234, 2, 62, 234, 63, 34];
+const old = ages.filter(age =>  age >= 60);
+```
+
+Hemos creado la variable `old`, almacenará  el resultado de aplicar la función `filter()` a `ages`. `filter()` recibe un paramétro `age`, que no es más que cada item de la iteración. Además, este recibe una condición que retornará solo si es cierta. 
+
+> `const old = ages.filter(age =>  age >= 60);` 
+
+Está condición es un poco rara, por que tienes una _función flecha_ que es mayor o igual a 60, pero lo que esto hará es que si la edad es mayor a 60 retornará cierto y el valor se agregará a la variable `old`, si hacemos: 
+
+> `console.log(old)`
+
+Veremos todos los valores que cumplieron la condición. 
+
 
 [Ir arriba 👆](#contenido)
 
